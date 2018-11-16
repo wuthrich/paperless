@@ -14,9 +14,6 @@ import javax.servlet.http.Part;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-/**
- * Servlet implementation class Upload
- */
 @WebServlet(asyncSupported = true, urlPatterns = { "/upload" })
 @MultipartConfig
 public class Upload extends HttpServlet {

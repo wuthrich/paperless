@@ -27,12 +27,9 @@ public class DownloadAppEngine extends HttpServlet {
 		}else {
 			id=null;
 		}
-		
-		System.out.println("Archivo: "+id);
-		
+			
 		ArchivoRAM archivo = ArchivoAppEngine.instancia.traerArchivoRAM(Integer.parseInt(id));
-		
-		
+				
 		response.setContentType("application/octet-stream");
 		response.setHeader("Content-Disposition", "attachment; filename=\""+archivo.nombrePedazo()+"\"");		
 		OutputStream os = response.getOutputStream();
