@@ -11,6 +11,6 @@ que permiten bajar cada pedazo mediante le servlet download (DownloadAppEngine.j
 Nota: 
 Con respecto a: "No debe haber restricciones respecto al archivo a cargar", el archivo a cargar no puede sobrepasar 1 MB, 
 debido a que el sistema de archivos de App Engine es de solo lectura, y para poder cumplir lo de "No se requiere hacer uso de base de datos.", 
-tuve que guardar el archivo en RAM, pense en ocupara algun almacenamiento como Google Cloud Storage https://cloud.google.com/storage/ o algo asi, 
+tuve que guardar el archivo en RAM, pense en ocupar algun almacenamiento como Google Cloud Storage https://cloud.google.com/storage/ o algo asi, 
 pero era un punto o el otro, y hacerlo asi permitiria que el WAR fuera deployable en cualquier lugar sin mayores configuraciones.
 Este proyecto se desarrollo con Eclipse Photon y Google Cloud Tools for Eclipse Version: 1.7.1.201807071456
