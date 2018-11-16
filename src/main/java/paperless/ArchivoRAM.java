@@ -7,12 +7,11 @@ public class ArchivoRAM {
 	private Integer numero;
 	
 	public String nombrePedazo() {
-		//String extension = "";
+		
 		String nombreSinExtencion = "";
 
 		int i = nombre.lastIndexOf('.');
-		if (i > 0) {
-		    //extension = nombre.substring(i+1);
+		if (i > 0) {		    
 		    nombreSinExtencion = nombre.substring(0, i);
 		}else {
 			nombreSinExtencion = nombre;

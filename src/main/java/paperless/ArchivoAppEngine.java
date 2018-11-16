@@ -50,21 +50,16 @@ public class ArchivoAppEngine {
 				cocienteNoCero = false;
 			}			
 		}
-		
-		System.out.println(
-				"El cociente de " + dividendo + " sobre " + divisor + " es: " + cociente + " el resto:" + residuo);
 
 		pedazos = new ArrayList<ArchivoRAM>();
-		//List<byte[]> archivos = new ArrayList<byte[]>(divisor);
-
+		
 		int from = 0, to = 0;
 
 		for (int i = 0; i < divisor; i++) {
 
 			if (i == 0) {
 				to = to + cociente + residuo;
-				byte[] archivo = Arrays.copyOfRange(archivoTotal, from, to);
-				//archivos.add(archivo);
+				byte[] archivo = Arrays.copyOfRange(archivoTotal, from, to);				
 				ArchivoRAM archivoRam = new ArchivoRAM();
 				archivoRam.setArchivo(archivo);
 				archivoRam.setNombre(nombre);
@@ -73,8 +68,7 @@ public class ArchivoAppEngine {
 				from = from + cociente + residuo;
 			} else {
 				to = to + cociente;
-				byte[] archivo = Arrays.copyOfRange(archivoTotal, from, to);
-				//archivos.add(archivo);
+				byte[] archivo = Arrays.copyOfRange(archivoTotal, from, to);				
 				ArchivoRAM archivoRam = new ArchivoRAM();
 				archivoRam.setArchivo(archivo);
 				archivoRam.setNombre(nombre);
@@ -110,10 +104,8 @@ public class ArchivoAppEngine {
 			byte[] archivo = ((ByteArrayOutputStream) outputStream).toByteArray();
 			dividir(archivo);
 
-		} catch (Exception e) {
-			// e.printStackTrace();
+		} catch (Exception e) {			
 			throw e;
-
 		} finally {
 			if (inputStream != null) {
 				try {
@@ -123,8 +115,7 @@ public class ArchivoAppEngine {
 				}
 			}
 			if (outputStream != null) {
-				try {
-					// outputStream.flush();
+				try {					
 					outputStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -134,9 +125,6 @@ public class ArchivoAppEngine {
 		}
 	}
 
-//	public byte[] getArchivo() {
-//		return archivo;
-//	}
 
 	public String getNombre() {
 		return nombre;
