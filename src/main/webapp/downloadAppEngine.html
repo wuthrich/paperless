@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body onload="loadDoc()">
+<a href="index.html">volver</a> 
+<p>Nombre archivo: <label id="nombre"></label></p>
+<p id="nombreAbsoluto"></p>
+<div id="links"></div>
+<div id="comando"></div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {  
+    	
+      var respuesta = JSON.parse(this.responseText);
+      console.log("respuesta: "+this.responseText);
+      if(null!=respuesta.nombre){
+    	  document.getElementById("nombre").innerHTML = respuesta.nombre;    	  
+    	  document.getElementById("nombreAbsoluto").innerHTML = respuesta.nombreAbsoluto;
+    	  
+    	  var comando = "copy /b ";
+    	  
+    	  for(var index = 0; index < respuesta.archivos.length; index++){
+    		var archivo = respuesta.archivos[index];  
+    		  
+   		    var x = document.createElement("A");
+   		    var t = document.createTextNode(archivo.nombrePedazo);
+   		    x.setAttribute("href", "download/"+archivo.numero);
+   		    x.appendChild(t);
+   		 	document.getElementById("links").appendChild(x); 
+   		 	
+   		 	var saltoLinea = document.createElement("BR");
+   		 	document.getElementById("links").appendChild(saltoLinea);
+   		 	
+   		 	comando+=archivo.nombrePedazo + " + ";
+    	  }
+    	  
+    	  var n = comando.lastIndexOf("+");
+    	  comando=comando.substring(0, n);
+    	  
+    	  comando+=respuesta.nombre;
+    	  document.getElementById("comando").innerHTML = comando;
+    	  
+      }else{
+    	  document.getElementById("nombre").innerHTML = "No hay archivo cargado";
+      }
+    }
+  };
+  xhttp.open("GET", "upload", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
